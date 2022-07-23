@@ -1,38 +1,46 @@
-# This solution for part 1 is not currently functioning
-
-with open("day07in.txt") as ipt:
+with open("C:/Users/Robert J/VS Code/PythonWorks/AdventOfCode/2015/day07in.txt") as ipt:
     data = ipt.read().splitlines()
 paths = {x.split(" -> ")[1]:x.split(" -> ")[0] for x in data}
+copy = {x:paths.get(x) for x in paths}
+# Part 1
 def getSignal(w):
     if w.isdigit():
-        print(w)
         return int(w)
     wire = paths.get(w)
-    print(f"{w}: {wire}")
+    if isinstance(wire,int):
+        return wire
     if "AND" in wire:
         w1,w2 = wire.split(" AND ")
-        # print(w,wire)
-        return getSignal(w1) & getSignal(w2)
+        paths[w] = getSignal(w1) & getSignal(w2)
+        return paths.get(w)
     elif "OR" in wire:
         w1,w2 = wire.split(" OR ")
-        # print(w,wire)
-        return getSignal(w1) | getSignal(w2)
+        paths[w] = getSignal(w1) | getSignal(w2)
+        return paths.get(w)
     elif "LSHIFT" in wire:
         w1,x = wire.split(" LSHIFT ")
-        # print(w,wire)
-        # print(f"w1: {w1}\twire:{wire}")
-        return getSignal(w1)<<int(x)
+        paths[w] = getSignal(w1)<<int(x)
+        return paths.get(w)
     elif "RSHIFT" in wire:
         w1,x = wire.split(" RSHIFT ")
-        # print(w,wire)
-        return getSignal(w1)>>int(x)
+        paths[w] = getSignal(w1)>>int(x)
+        return paths.get(w)
     elif "NOT" in wire:
         w1 = wire.split(" ")[1]
         xo = str(bin(getSignal(w1)))[2:]
         xo = "0"*(16-len(xo))+xo
         xi = "".join(["1" if i == "0" else "0" for i in xo ])
-        return int(xi,2))
+        paths[w] = int(xi,2)
+        return paths.get(w)
     else:
-        # print(w,wire)
-        return getSignal(wire)
-print(getSignal("a"))
+        paths[w] = getSignal(wire)
+        return paths.get(w)
+
+part1Signal = getSignal("a")
+print(part1Signal)
+
+# Part 2
+paths = copy
+paths["b"] = part1Signal
+part2Signal = getSignal("a")
+print(part2Signal)
