@@ -5,7 +5,7 @@ with open("day07in.txt") as ipt:
 paths = {x.split(" -> ")[1]:x.split(" -> ")[0] for x in data}
 def getSignal(w):
     if w.isdigit():
-        # print(w)
+        print(w)
         return int(w)
     wire = paths.get(w)
     print(f"{w}: {wire}")
