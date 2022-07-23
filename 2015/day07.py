@@ -1,4 +1,4 @@
-# This solution is not currently functioning
+# This solution for part 1 is not currently functioning
 
 with open("day07in.txt") as ipt:
     data = ipt.read().splitlines()
