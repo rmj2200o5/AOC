@@ -28,8 +28,10 @@ def getSignal(w):
         return getSignal(w1)>>int(x)
     elif "NOT" in wire:
         w1 = wire.split(" ")[1]
-        print(w1)
-        return ~getSignal(w1)
+        xo = str(bin(getSignal(w1)))[2:]
+        xo = "0"*(16-len(xo))+xo
+        xi = "".join(["1" if i == "0" else "0" for i in xo ])
+        return int(xi,2))
     else:
         # print(w,wire)
         return getSignal(wire)
