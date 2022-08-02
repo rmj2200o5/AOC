@@ -30,5 +30,5 @@ routes("Tristram",[c for c in cities if c != "Tristram"],0,[])
 
 for city in cities:
     routes(city,[c for c in cities if c != city],0,[])
-print(shortest)
-print(longest)
+print(f"Part 1: {shortest}")
+print(f"Part 2: {longest}")
