@@ -1,3 +1,5 @@
+#This solution is not functioning yet
+
 data = "1113122113"
 def lookAndSay(s,x):
     if x ==1:
