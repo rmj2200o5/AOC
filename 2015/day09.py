@@ -6,7 +6,6 @@ with open("C:/Users/Robert J/VS Code/PythonWorks/AdventOfCode/2015/day09in.txt")
         for city in  dat.split(" = ")[0].split(" to "):
             if city not in cities:
                 cities.append(city)
-print(distance)
 
 shortest = 0xFFFFFFFF
 longest = 0
@@ -26,7 +25,6 @@ def routes(current,remaining,dist,path):
             d = distance.get(f"{city}-{current}")
         rem = [c for c in r if c != city]
         routes(city,r,dist+d,path+[current])
-routes("Tristram",[c for c in cities if c != "Tristram"],0,[])
 
 for city in cities:
     routes(city,[c for c in cities if c != city],0,[])
