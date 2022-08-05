@@ -1,6 +1,6 @@
 with open("C:/Users/Robert J/VS Code/PythonWorks/AdventOfCode/2015/day12in.txt") as ipt:
     d = ipt.read()
-data = []
+data = [] # This line isn't necesarry...I just didn't know how to make the "data not defined" warning go away
 exec("data = "+d)
 
 def findSum(dat):
