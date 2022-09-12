@@ -7,17 +7,17 @@ armors = re.findall(r"(\w+) +(\d+) *(\d+) *(\d+)",sA)
 rings = re.findall(r"(\w+ \+\d) +(\d+) *(\d+) *(\d+)",sR)
 rings = sorted(rings,key = lambda x:int(x[1]))
 
-#Just try every combination of armor: Can do iteratively
+#Just try every combination of equipment: Can do iteratively
 
 #adding null piece for armor and rings type
 armors = [("null", "0", "0","0")] + armors
 rings = [("null +0", "0", "0","0")] + rings
 
-#stats format [health,damage,armor]
+#stats format: [health,damage,armor]
 def beatBoss(pStats):
     bossStats = [104,8,1]
     turn = 0
-    return math.ceil(104/max(1,pStats[1]-bossStats[2]))<=math.ceil(100/max(1,bossStats[1]-pStats[2]))
+    return math.ceil(bossStats[0]/max(1,pStats[1]-bossStats[2]))<=math.ceil(pStats[0]/max(1,bossStats[1]-pStats[2]))
 
     
 def part1():
