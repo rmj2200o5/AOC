@@ -1,3 +1,5 @@
+# NOTE: The method used to solve this challenge was not orignal to my own thought, as I was previously unaware of how to use "reduce" and "combinations"
+# Any use of combinations or reduce outside of day 24 2015 was possible as a result of my studying this method
 from functools import reduce
 from itertools import combinations
 from operator import mul
