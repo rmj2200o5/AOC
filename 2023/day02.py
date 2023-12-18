@@ -31,7 +31,7 @@ from functools import reduce
 totalPower = 0
 for line in data:
     info = line.split(": ")
-    gameNumber = int(re.findall(r"Game (\d+)",info[0])[0])
+    gameNumber = int(re.findall(r"Game (\d+)",info[0])[0]) 
     # print(gameNumber)
     pulls = info[1].split("; ")
 
@@ -44,5 +44,5 @@ for line in data:
             if(int(color[0])>colorCounts[color[1]]):
                 colorCounts[color[1]] = int(color[0])
     # print(colorCounts.values())
-    totalPower+= reduce(lambda a, b: a*b, list(colorCounts.values()))
+    totalPower+= reduce(lambda a, b: a*b, list(colorCounts.values())) # == colorCounts[red]*colorCounts[green]*colorCounts[blue]
 print(totalPower)
